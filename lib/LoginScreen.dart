@@ -31,9 +31,8 @@ class LoginScreen extends StatelessWidget {
             size: 50,
           ),
         ),
-        Positioned(
-          top: 150,
-          left: 35,
+        Align(
+          alignment: Alignment.center,
           child: Container(
             decoration: new BoxDecoration(
                 color: Colors.white, //new Color.fromRGBO(255, 0, 0, 0.0),
@@ -106,29 +105,39 @@ class LoginScreen extends StatelessWidget {
                 ),
                 Padding(
                   padding: EdgeInsets.fromLTRB(0, 40, 0, 0),
-                  child: InkWell(
-                    onTap: () {
-                      print("CLicked");
-                    },
-                    hoverColor: Colors.indigoAccent,
-                    splashColor: Colors.indigoAccent,
+                  child: Material(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.only(
+                            bottomLeft: Radius.circular(20),
+                            bottomRight: Radius.circular(20))),
+                    color: Colors.transparent,
                     child: Container(
-                      decoration: new BoxDecoration(
-                          color: Colors
-                              .deepPurple, //new Color.fromRGBO(255, 0, 0, 0.0),
-                          borderRadius: new BorderRadius.only(
-                              bottomRight: Radius.circular(20.0),
-                              bottomLeft: Radius.circular(20.0))),
-                      width: 320,
-                      height: 46,
-                      child: Center(
-                        child: Text(
-                          "CONTINUE",
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 20,
-                              fontWeight: FontWeight.w400),
-                          textAlign: TextAlign.justify,
+                      color: Colors.deepPurple,
+                      child: Material(
+                        color: Colors.transparent,
+                        child: InkWell(
+                          onTap: () {
+                            print("CLicked");
+                          },
+                          child: Center(
+                            child: Material(
+                              color: Colors.transparent,
+                              child: Container(
+                                height: 50,
+                                child: Padding(
+                                  padding: EdgeInsets.all(10),
+                                  child: Text(
+                                    "CONTINUE",
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.w400),
+                                    textAlign: TextAlign.justify,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
                         ),
                       ),
                     ),
@@ -144,7 +153,10 @@ class LoginScreen extends StatelessWidget {
             padding: EdgeInsets.all(40),
             child: Text(
               "ALREADY HAVE AN ACCOUNT",
-              style: TextStyle(fontSize: 15,fontWeight: FontWeight.w400, color: Colors.deepPurple),
+              style: TextStyle(
+                  fontSize: 15,
+                  fontWeight: FontWeight.w400,
+                  color: Colors.deepPurple),
             ),
           ),
         ),
