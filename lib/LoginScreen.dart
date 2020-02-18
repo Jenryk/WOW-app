@@ -1,10 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 Color _primaryColor = Colors.deepPurple;
 
 class LoginScreen extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
+    void _showDialog(){
+      showDialog(context: context, builder: (BuildContext context){
+        return AlertDialog(title: Text("Hello World"),);
+      });
+    }
     return Stack(
       children: <Widget>[
         Container(
@@ -79,6 +86,10 @@ class LoginScreen extends StatelessWidget {
                             child: SizedBox(
                               width: 50,
                               child: TextField(
+                                inputFormatters: <TextInputFormatter>[
+                                  WhitelistingTextInputFormatter.digitsOnly
+                                ],
+                                keyboardType: TextInputType.number,
                                 decoration: InputDecoration(
                                   labelText: 'CC',
                                 ),
@@ -88,6 +99,10 @@ class LoginScreen extends StatelessWidget {
                           SizedBox(
                             width: 185,
                             child: TextField(
+                              inputFormatters: <TextInputFormatter>[
+                                  WhitelistingTextInputFormatter.digitsOnly
+                                ],
+                                keyboardType: TextInputType.phone,
                               decoration: InputDecoration(
                                 labelText: 'Mobile Number',
                               ),
@@ -96,6 +111,8 @@ class LoginScreen extends StatelessWidget {
                         ],
                       ),
                       TextField(
+                        keyboardType: TextInputType.emailAddress,
+                        
                         decoration: InputDecoration(
                           labelText: 'Email',
                         ),
@@ -116,9 +133,10 @@ class LoginScreen extends StatelessWidget {
                       child: Material(
                         color: Colors.transparent,
                         child: InkWell(
-                          onTap: () {
-                            print("CLicked");
-                          },
+                          onTap: (){
+                            _showDialog();
+                          }
+                          ,
                           child: Center(
                             child: Material(
                               color: Colors.transparent,
